@@ -26,7 +26,6 @@ class RegisterCubit extends Cubit<RegisterState> {
       );
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController =
@@ -44,7 +43,6 @@ class RegisterCubit extends Cubit<RegisterState> {
         {
           _changeGender(action.gender);
         }
-
       case UserRegistrationAction():
         {
           _registerButtonPressed();

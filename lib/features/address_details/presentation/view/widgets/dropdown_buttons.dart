@@ -27,7 +27,7 @@ class DropdownButtons extends StatelessWidget {
                 validator:
                     (value) =>
                         viewModel.validator.validateCityName(value ?? ''),
-                value:
+                initialValue:
                     state.selectedCityId != null &&
                             state.filteredCities.any(
                               (city) => city.id == state.selectedCityId,
@@ -64,7 +64,7 @@ class DropdownButtons extends StatelessWidget {
                 validator:
                     (value) =>
                         viewModel.validator.validateAreaName(value ?? ''),
-                value:
+                initialValue:
                     state.selectedAreaId != null &&
                             state.areas.any(
                               (area) => area.id == state.selectedAreaId,

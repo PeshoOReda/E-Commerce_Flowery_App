@@ -43,12 +43,10 @@ class AddressItem extends StatelessWidget {
               onTap: () => onChanged(index),
               child: Row(
                 children: [
-                  Radio<int>(
-                    value: index,
+                  RadioGroup<int>(
                     groupValue: groupValue,
-                    activeColor: AppColors.pink,
-                    fillColor: WidgetStateProperty.all(AppColors.pink),
                     onChanged: onChanged,
+                    child: Radio<int>(value: index),
                   ),
                   const SizedBox(width: 8),
                   Expanded(

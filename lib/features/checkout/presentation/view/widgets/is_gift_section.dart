@@ -44,7 +44,7 @@ class IsGiftSection extends StatelessWidget {
                   leading: Switch(
                     value: state.isGift!,
                     onChanged: (val) => viewModel.toggleGift(val),
-                    activeColor: AppColors.pink,
+                    activeThumbColor: AppColors.pink,
                     activeTrackColor: AppColors.pink[AppColors.colorCode40],
                     inactiveThumbColor: AppColors.white,
                     inactiveTrackColor: AppColors.black.withAlpha(5),

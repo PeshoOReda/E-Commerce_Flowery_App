@@ -35,7 +35,7 @@ class NotificationSection extends StatelessWidget {
                 onChanged: (value) {
                   viewModel.notification(value);
                 },
-                activeColor: AppColors.pink,
+                activeThumbColor: AppColors.pink,
                 activeTrackColor: AppColors.pink[AppColors.colorCode40],
                 inactiveThumbColor: AppColors.white,
                 inactiveTrackColor: AppColors.black.withValues(alpha: 0.1),

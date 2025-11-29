@@ -42,14 +42,21 @@ class PaymentItem extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                Radio<int>(
-                  value: index,
-                  groupValue: viewModel.selectedPaymentIndex,
-                  activeColor: AppColors.pink,
-                  fillColor: WidgetStateProperty.all(AppColors.pink),
-                  onChanged: (int? value) {
-                    if (value != null) viewModel.selectPayment(value);
+                RadioGroup<int>(
+                  groupValue:
+                      context.watch<CheckoutCubit>().selectedPaymentIndex,
+                  onChanged: (value) {
+                    if (value != null) {
+                      context.read<CheckoutCubit>().selectPayment(value);
+                    }
                   },
+                  child: const Column(
+                    children: [
+                      PaymentItem(title: "Credit Card", index: 0),
+                      PaymentItem(title: "Cash on Delivery", index: 1),
+                      PaymentItem(title: "PayPal", index: 2),
+                    ],
+                  ),
                 ),
               ],
             ),

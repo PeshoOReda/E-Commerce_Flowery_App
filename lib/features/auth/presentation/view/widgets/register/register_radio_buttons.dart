@@ -24,24 +24,36 @@ class RegisterRadioTile extends StatelessWidget {
           (previous, current) =>
               previous.selectedGender != current.selectedGender,
       builder: (context, state) {
-        return RadioListTile<String>(
-          title: Text(
-            labelKey.tr(),
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-              color:
-                  state.selectedGender == value
-                      ? AppColors.black
-                      : AppColors.gray,
-            ),
-          ),
-          value: value,
-          groupValue: state.selectedGender,
-          activeColor: AppColors.pink,
-          contentPadding: EdgeInsets.zero,
-          visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
-          onChanged: (newValue) {
-            viewModel.doIntent(GenderChangedAction(gender: newValue!));
+        return GestureDetector(
+          onTap: () {
+            viewModel.doIntent(GenderChangedAction(gender: value));
           },
+          child: Row(
+            children: [
+              RadioGroup<String>(
+                groupValue: state.selectedGender,
+                onChanged: (gender) {
+                  viewModel.doIntent(GenderChangedAction(gender: gender!));
+                },
+                child: const Column(
+                  children: [
+                    RegisterRadioTile(value: 'male', labelKey: 'Male'),
+                    RegisterRadioTile(value: 'female', labelKey: 'Female'),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 8),
+              Text(
+                labelKey.tr(),
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  color:
+                      state.selectedGender == value
+                          ? AppColors.black
+                          : AppColors.gray,
+                ),
+              ),
+            ],
+          ),
         );
       },
     );
